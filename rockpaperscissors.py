@@ -24,22 +24,28 @@ def start(p1,p2,stats,date):
     r = 0
     turn1 = 0
     turn2 = 0
-    win = 0
+    w1 = 0
+    w2 = 0
 
     while r < 3:
         r += 1
+        wins = 0
         print("\nRound " + str(r) + "\n")
 
         print(p1 + ", what do you choose?")
         c1 = choose(p1,turn1)
-        w1 = vibeCheck(p1,p2,c1,c2)
 
         print("\n" + p2 + ", what do you choose?")
         c2 = choose(p2,turn2)
-        w2 = vibeCheck(p1,p2,c1,c2)
+
+        wins = vibeCheck(p1,p2,c1,c2,wins)
+        
+        if wins % 2 != 0:
+            w1 += 1
+        elif wins % 2 == 0:
+            w2 += 1
        
     win(p1,p2,w1,w2,stats,date)
-
 
 def choose(p,t):
     print("\nHere are your choices:\n")
@@ -56,41 +62,38 @@ def choose(p,t):
 
     return(v)
 
-
-def vibeCheck(p1,p2,t1,t2):
+def vibeCheck(p1,p2,t1,t2,won):
     sum = int(t1) + int(t2)
-
-    #fix math
 
     if sum == 2:
         print("\nNo one wins this round")
     elif sum == 4:
         if t1 == 1:
-            win += 1
+            won += 1
             print("\n" + p1 + " wins this round!")
         else:
-            win += 1
+            won += 2
             print("\n" + p2 + " wins this round!")
     elif sum == 5:
         if t1 == 4:
-            win += 1
+            won += 1
             print("\n" + p1 + " wins this round!")
         else:
-            win += 1
+            won += 2
             print("\n" + p2 + " wins this round!")
     elif sum == 6:
         print("\nNo one wins this round")
     elif sum == 7:
         if t1 == 3:
-            win += 1
+            won += 1
             print("\n" + p1 + " wins this round!")
         else:
-            win += 1
+            won += 2
             print("\n" + p2 + " wins this round!")
     elif sum == 8:
         print("\nNo one wins this round")
 
-    return(win)
+    return(won)
 
 def win(p1,p2,w1,w2,s,d):
     if w1 >= 2:
@@ -151,9 +154,5 @@ def main():
             myfile.close() #closes empty txt file!
         else:
             break
-    
-
-    start()
-
-
+  
 main()
