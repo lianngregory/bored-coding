@@ -1,11 +1,11 @@
-#list of letters and morse code translation!
+#dict of letters and morse code translation!
 words = {"a" : "*-", "b" : "-***", "c" : "-*-*", "d" : "-**", "e" : "*", "f" : "**-*", "g" : "--*", "h" : "****", "i" : "**", "j" : "*---", "k" : "-*-", "l" : "*-**" , "m" : "--", "n" : "-*", "o" : "---", "p" : "*--*", "q" : "--*-", "r" : "*-*", "s" : "***", "t" : "-", "u" : "**-", "v" : "***-", "w" : "*--", "x" : "-**-", "y" : "-*--", "z" : "--**"}
 
 #blank list to append later with translated phrase
 translate = []
 
 #taking in user input
-userEnter = input("Please type a sentence or phrase, and I will translate it to morse code for you!")
+userEnter = input("Please type a sentence or phrase, and I will translate it to morse code for you!\n")
 
 userEnter = userEnter.lower() #lowercases everything!
 
@@ -19,4 +19,5 @@ for w in letters:
         translate.append(w)
 
 #print the snazzy phrase!!
+print("\nYou typed: " + userEnter)
 print(*translate)
